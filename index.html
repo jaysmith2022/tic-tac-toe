@@ -1,19 +1,33 @@
 <!DOCTYPE html>
     <html lang="en">
         <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <link href='./styles.css' rel='stylesheet'>
             <title>Tic-Tac-Toe</title>
         </head>
-
         <body>
+            <video id="background-video" class="background" autoplay loop muted poster="assest/videos/MortalKombatBG.mp4">
+                <source src="assest/videos/MortalKombatBG.mp4" type="video/mp4">
+            </video>
             <section class="left-player1">
                 <article class="player1-info">
-                    <img>
-                    <p class="player1-wins">0</p>
-                    <p>wins</p>
+                    <article class="player1-logo">
+                    <video id="player1-idle" class="player1" autoplay loop muted poster ="assest/videos/subzero-idol.webm">
+                        <source src="assest/videos/subzero-idol.webm" type="video/webm" height="25px">
+                    </article>
+                    <div class="left-container">
+                        <p class="player1-wins">0</p>
+                        <p>wins</p>
+                    </div>
                 </article>
             </section>
             <section class="main-area">
-
+                <article class="win-message hidden">
+                    <img>
+                    <p>won!</p>
+                </article>
                 <table>
                     <td class="box-0" id="box0"></td>
                     <td class="box-1" id="box1"></td>
@@ -27,11 +41,19 @@
                 </table>
             </section>
             <section class="right-player2">
-                <article class="player1-info">
-                    <img>
-                    <p class="player1-wins">0</p>
-                    <p>wins</p>
+                <article class="player2-info">
+                    <article class="player2-logo">
+                        <video id="player2-idle" class="player2" autoplay loop muted poster="assest/videos/scorpio-idol.webm">
+                            <source src="assest/videos/scorpio-idol.webm" type="video/webm" height="25px">
+                        </article>
+                        <div class="right-container">
+                            <p class="player2-wins">0</p>
+                            <p>wins</p>
+                        </div>
                 </article>
             </section>
+            <script src="player.js"></script>
+            <script src="game.js"></script>
+            <script src="main.js"></script>
         </body>
     </html>

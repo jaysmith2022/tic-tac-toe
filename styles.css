@@ -1,0 +1,79 @@
+html, 
+body {
+    height:100%
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#background-video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+#player1-idle,
+#player2-idle {
+    height: 30vh;
+}
+
+.left-player1,
+.right-player2 {
+    width: 25%;
+    display: flex;
+    height: -webkit-fill-available;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.main-area {
+    width: 50%;
+    height:100%;
+}
+
+.win-message {
+    height:25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.player1-info,
+.player2-info {
+    display: flex;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.left-container,
+.right-container {
+    width: inherit;
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    margin-left: 10px;
+    color: white;
+    font-size: x-large;
+}
+
+.hidden {
+    display:none;
+}
