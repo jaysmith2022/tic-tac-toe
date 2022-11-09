@@ -8,14 +8,14 @@
             <title>Tic-Tac-Toe</title>
         </head>
         <body>
-            <video id="background-video" class="background" autoplay loop muted poster="assest/videos/MortalKombatBG.mp4">
-                <source src="assest/videos/MortalKombatBG.mp4" type="video/mp4">
+            <video id="background-video" class="background" autoplay loop muted poster="assets/videos/MortalKombatBG.mp4">
+                <source src="assets/videos/MortalKombatBG.mp4" type="video/mp4">
             </video>
             <section class="left-player1">
                 <article class="player1-info">
                     <article class="player1-logo">
-                    <video id="player1-idle" class="player1" autoplay loop muted poster ="assest/videos/subzero-idol.webm">
-                        <source src="assest/videos/subzero-idol.webm" type="video/webm" height="25px">
+                    <video id="player1-idle" class="player1" autoplay loop muted poster ="assets/videos/subzero-idol.webm">
+                        <source src="assets/videos/subzero-idol.webm" type="video/webm" height="25px">
                     </article>
                     <div class="left-container">
                         <p class="player1-wins">0</p>
@@ -25,26 +25,25 @@
             </section>
             <section class="main-area">
                 <article class="win-message hidden">
-                    <img>
-                    <p>won!</p>
+                    <p class="main-page-message"></p>
                 </article>
                 <table class="game-board">
-                    <td class="box-0" id="box0">0</td>
-                    <td class="box-1" id="box1">1</td>
-                    <td class="box-2" id="box2">2</td>
-                    <td class="box-3" id="box3">3</td>
-                    <td class="box-4" id="box4">4</td>
-                    <td class="box-5" id="box5">5</td>
-                    <td class="box-6" id="box6">6</td>
-                    <td class="box-7" id="box7">7</td>
-                    <td class="box-8" id="box8">8</td>
+                    <td class="box-0" id="box0" data-section='0'></td>
+                    <td class="box-1" id="box1" data-section='1'></td>
+                    <td class="box-2" id="box2" data-section='2'></td>
+                    <td class="box-3" id="box3" data-section='3'></td>
+                    <td class="box-4" id="box4" data-section='4'></td>
+                    <td class="box-5" id="box5" data-section='5'></td>
+                    <td class="box-6" id="box6" data-section='6'></td>
+                    <td class="box-7" id="box7" data-section='7'></td>
+                    <td class="box-8" id="box8" data-section='8'></td>
                 </table>
             </section>
             <section class="right-player2">
                 <article class="player2-info">
                     <article class="player2-logo">
-                        <video id="player2-idle" class="player2" autoplay loop muted poster="assest/videos/scorpio-idol.webm">
-                            <source src="assest/videos/scorpio-idol.webm" type="video/webm" height="25px">
+                        <video id="player2-idle" class="player2" autoplay loop muted poster="assets/videos/scorpio-idol.webm">
+                            <source src="assets/videos/scorpio-idol.webm" type="video/webm" height="25px">
                         </article>
                         <div class="right-container">
                             <p class="player2-wins">0</p>
