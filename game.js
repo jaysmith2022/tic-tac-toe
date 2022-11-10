@@ -1,7 +1,7 @@
 class Game {
     constructor() {
         this.player1 = new Player(1, 'assets/photos/Frost-Shard.png')
-        this.player2 = new Player(2, 'O')
+        this.player2 = new Player(2, 'assets/photos/fire-token.png')
         this.gameBoard = [null, null, null, null, null, null, null, null, null]
         this.numberOfTurns = 1
         this.whosTurn = true
@@ -28,11 +28,11 @@ class Game {
         ]
         for(var i = 0; i < winMap.length;i++) {
             if (player.boardPosition.includes(winMap[i][0]) && player.boardPosition.includes(winMap[i][1]) && player.boardPosition.includes(winMap[i][2])) {
-                player.wins++
+                player.increaseWins()
             if (!this.whosTurn) {
-                this.whoWins = 'Sub-Zero Wins. Flawless Victory'
+                this.whoWins = `Sub-Zero Wins. Flawless Victory`
             } else {
-                this.whoWins = `Scorpion Wins. Flawless Victory `
+                this.whoWins = `Scorpion Wins. Flawless Victory`
             }
         }
     }
@@ -43,6 +43,9 @@ class Game {
         this.player1.boardPosition = []
         this.player2.boardPosition = []
         this.whoWins = null
+        this.gameBoard = [null, null, null, null, null, null, null, null, null]
+        this.whosTurn = true
+        
     }
 
     drawMap() {
