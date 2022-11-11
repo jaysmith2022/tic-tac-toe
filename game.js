@@ -3,9 +3,10 @@ class Game {
         this.player1 = new Player(1, 'assets/photos/Frost-Shard.png')
         this.player2 = new Player(2, 'assets/photos/fire-token.png')
         this.gameBoard = [null, null, null, null, null, null, null, null, null]
-        this.numberOfTurns = 1
+        this.numberOfTurns = 0
         this.whosTurn = true
         this.whoWins = null
+        this.gameState = ''
     }
 
 
@@ -30,27 +31,39 @@ class Game {
             if (player.boardPosition.includes(winMap[i][0]) && player.boardPosition.includes(winMap[i][1]) && player.boardPosition.includes(winMap[i][2])) {
                 player.increaseWins()
             if (!this.whosTurn) {
-                this.whoWins = `Sub-Zero Wins. Flawless Victory`
+                this.whoWins = `Sub-Zero Wins Flawless Victory`
+                this.gameState = 'Winner'
             } else {
-                this.whoWins = `Scorpion Wins. Flawless Victory`
+                this.whoWins = `Scorpion Wins Flawless Victory`
+                this.gameState = 'Winner'
             }
         }
     }
 }
 
     resetGame() {
+        this.gameState = ''
         this.numberOfTurns = 0
         this.player1.boardPosition = []
         this.player2.boardPosition = []
         this.whoWins = null
         this.gameBoard = [null, null, null, null, null, null, null, null, null]
-        this.whosTurn = true
+        if (this.player1.wins === this.player2.wins && this.whoWins === `Sub-Zero Wins Flawless Victory`) {
+            this.whosTurn = false
+        } else if (this.player1.wins === this.player2.wins && this.whoWins === `Scorpion Wins Flawless Victory`) {
+            this.whosTurn = true
+        } else if (this.player1.wins > this.player2.wins) {
+            this.whosTurn = false
+        } else if (this.player1.wins < this.player2.wins) {
+            this.whosTurn = true
+        }
         
     }
 
     drawMap() {
-        if (this.numberOfTurns === 10 && this.whoWins === null) {
+        if (this.numberOfTurns === 9 && this.whoWins === null) {
             this.whoWins = "Nobody won, be ashamed"
+            this.gameState = 'Draw'
         }
     }
 }
