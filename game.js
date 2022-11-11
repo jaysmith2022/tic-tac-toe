@@ -13,6 +13,11 @@ class Game {
     changeTurns() {
         this.numberOfTurns++
         this.whosTurn = !this.whosTurn
+        // if (this.whosTurn === true) {
+        //     this.whosTurn = false
+        // } else {
+        //     this.whosTurn = true
+        // }
     }
 
 
@@ -41,24 +46,48 @@ class Game {
     }
 }
 
-    resetGame() {
+
+    resetGame(player1, player2) {
+        if (newGame.player1.wins === 5 || newGame.player2.wins === 5) {
+            this.whoWins = null
+            console.log('this is working')
+            this.player1.wins = 0
+            this.player2.wins = 0
+            this.gameState = ''
+            this.numberOfTurns = 0
+            this.player1.boardPosition = []
+            this.player2.boardPosition = []
+            
+            // this.gameBoard = [null, null, null, null, null, null, null, null, null]
+            // if (this.player1.wins === this.player2.wins && this.whoWins === `Sub-Zero Wins Flawless Victory`) {
+            //     this.whosTurn = false
+            // } else if (this.player1.wins === this.player2.wins && this.whoWins === `Scorpion Wins Flawless Victory`) {
+            //     this.whosTurn = true
+            // } else if (this.player1.wins > this.player2.wins) {
+            //     this.whosTurn = false
+            // } else if (this.player1.wins < this.player2.wins) {
+            //     this.whosTurn = true
+            // }
+        }
         this.gameState = ''
         this.numberOfTurns = 0
         this.player1.boardPosition = []
         this.player2.boardPosition = []
         this.whoWins = null
         this.gameBoard = [null, null, null, null, null, null, null, null, null]
-        if (this.player1.wins === this.player2.wins && this.whoWins === `Sub-Zero Wins Flawless Victory`) {
-            this.whosTurn = false
-        } else if (this.player1.wins === this.player2.wins && this.whoWins === `Scorpion Wins Flawless Victory`) {
-            this.whosTurn = true
-        } else if (this.player1.wins > this.player2.wins) {
-            this.whosTurn = false
-        } else if (this.player1.wins < this.player2.wins) {
-            this.whosTurn = true
-        }
         
+        // if (this.player1.wins === this.player2.wins && this.whoWins === `Sub-Zero Wins Flawless Victory`) {
+        //     this.whosTurn = false
+        // } else if (this.player1.wins === this.player2.wins && this.whoWins === `Scorpion Wins Flawless Victory`) {
+        //     this.whosTurn = true
+        // } else if (this.player1.wins > this.player2.wins) {
+        //     this.whosTurn = false
+        // } else if (this.player1.wins < this.player2.wins) {
+        //     this.whosTurn = true
+        // }
+
     }
+
 
     drawMap() {
         if (this.numberOfTurns === 9 && this.whoWins === null) {

@@ -21,8 +21,10 @@ var newGame = new Game()
 fullBoard.addEventListener('click', newGamePlay)
 window.addEventListener('load', matchRestart)
 
+
 function matchRestart(event) {
     event.preventDefault()
+    console.log(newGame.whosTurn)
     if (newGame.whosTurn) {
         mainMessage.innerHTML = `It's<img class="player1-turn" src="assets/photos/Frost-Shard.png"> ' s turn`
     } else if (!newGame.whosTurn)
@@ -32,7 +34,7 @@ function matchRestart(event) {
 
 function newGamePlay(event) {
     event.preventDefault()
-        if (event.target.textContent === '' && event.target.dataset.section) {
+    if (event.target.textContent === '' && event.target.dataset.section) {
         if (newGame.whosTurn && newGame.whoWins === null) {
             newGame.gameBoard[parseInt(event.target.dataset.section)] = 1
             newGame.player1.boardPosition.push(parseInt(event.target.dataset.section))
@@ -41,27 +43,13 @@ function newGamePlay(event) {
             newGame.checkForWin(newGame.player1)
             newGame.drawMap()
             updateWins()
-
         if (newGame.gameState === 'Draw') {
             updateWinMessage()
-            // setTimeout(() => {
-            // newGame.resetGame()
-            // displayGamePieces()
-            //     updateWords()
-            // }, 3000)
-            }   
+        }   
         if (newGame.gameState === 'Winner') {
-            // newGame.resetGame()
             updateWinMessage()
-            // setTimeout(() => {
-                // newGame.resetGame()
-                // displayGamePieces()
-
-                // updateWins()
-            // }, 3000)
         }
-
-        displayGamePieces()
+            displayGamePieces()
             return
         }
         if (!newGame.whosTurn && newGame.whoWins === null) {
@@ -72,41 +60,30 @@ function newGamePlay(event) {
             newGame.checkForWin(newGame.player2)
             newGame.drawMap()
             updateWins()
-            // displayGamePieces()
             if (newGame.gameState === 'Draw') {
                 updateWinMessage()
-                // setTimeout(() => {
-                // newGame.resetGame()
-                // displayGamePieces()
-                //     updateWords()
-                // }, 3000)
             }
             if (newGame.gameState === 'Winner') {
                 updateWinMessage()
-                // setTimeout(() => {
-                // newGame.resetGame()
-                // displayGamePieces()
-                //     updateWords()
-                // }, 3000)
             }
-    
-            displayGamePieces()
-                return
-            }
-
-    function updateWins() {
-        player1Wins.innerText = newGame.player1.wins
-        player2Wins.innerText = newGame.player2.wins
-            if (newGame.whoWins !== null ) {
-                player1Wins.innerText = newGame.player1.wins
-                player2Wins.innerText = newGame.player2.wins
                 displayGamePieces()
-                spots.forEach(spots => {
-                    spots.classList.remove('disabled')
-                })
-                }
-            } 
+                return
         }
+
+
+function updateWins() {
+    player1Wins.innerText = newGame.player1.wins
+    player2Wins.innerText = newGame.player2.wins
+        if (newGame.whoWins !== null ) {
+            player1Wins.innerText = newGame.player1.wins
+            player2Wins.innerText = newGame.player2.wins
+            displayGamePieces()
+            spots.forEach(spots => {
+                spots.classList.remove('disabled')
+            })
+            }
+        } 
+    }
     
 
 function displayGamePieces() {
@@ -122,9 +99,8 @@ function displayGamePieces() {
             }
         }
         } 
-
+    
         
-
 function updateWords() {
     if (newGame.whosTurn && newGame.whoWins === null) {
         mainMessage.innerHTML = `It's<img class="player1-turn" src="assets/photos/Frost-Shard.png">' s turn`
@@ -132,6 +108,7 @@ function updateWords() {
         mainMessage.innerHTML = `It's<img class="player2-turn" src="assets/photos/fire-token.png">' s turn`
     }
 }
+
 
 function updateWinMessage() {
     if (newGame.whosTurn && newGame.gameState === '') {
@@ -152,15 +129,20 @@ function updateWinMessage() {
         setTimeout(() => {
             clearWinMessage()
             newGame.resetGame()
+            player1Wins.innerText = newGame.player1.wins
+            player2Wins.innerText = newGame.player2.wins
             displayGamePieces()
             spots.forEach(spots => {
                 spots.classList.remove('disabled')
+                console.log(newGame.whosTurn)
+
             })
-            }, 3000)
+            }, 2000)
 }
+
 
 function clearWinMessage() {
     mainMessage.classList.remove('hidden')
     gameWinMessage.classList.add('hidden')
-}
+    }
 }
