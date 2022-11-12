@@ -35,10 +35,11 @@ function matchRestart(event) {
 function newGamePlay(event) {
     event.preventDefault()
     if (event.target.textContent === '' && event.target.dataset.section) {
-        if (newGame.whosTurn && newGame.whoWins === null) {
+        if (newGame.whosTurn && newGame.whoWins === null && newGame.firstTurn === true) {
             newGame.gameBoard[parseInt(event.target.dataset.section)] = 1
             newGame.player1.boardPosition.push(parseInt(event.target.dataset.section))
             newGame.changeTurns()
+            console.log(newGame.whosTurn)
             updateWords()
             newGame.checkForWin(newGame.player1)
             newGame.drawMap()
@@ -48,6 +49,7 @@ function newGamePlay(event) {
         }   
         if (newGame.gameState === 'Winner') {
             updateWinMessage()
+            newGame.changeTurns()
         }
             displayGamePieces()
             return
@@ -56,12 +58,14 @@ function newGamePlay(event) {
             newGame.gameBoard[parseInt(event.target.dataset.section)] = 2
             newGame.player2.boardPosition.push(parseInt(event.target.dataset.section))
             newGame.changeTurns()
+            console.log(newGame.whosTurn)
             updateWords()
             newGame.checkForWin(newGame.player2)
             newGame.drawMap()
             updateWins()
             if (newGame.gameState === 'Draw') {
                 updateWinMessage()
+                newGame.changeTurns()
             }
             if (newGame.gameState === 'Winner') {
                 updateWinMessage()
