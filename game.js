@@ -5,6 +5,7 @@ class Game {
         this.gameBoard = [null, null, null, null, null, null, null, null, null]
         this.numberOfTurns = 0
         this.whosTurn = true
+        this.firstTurn = true
         this.whoWins = null
         this.gameState = ''
     }
@@ -13,11 +14,6 @@ class Game {
     changeTurns() {
         this.numberOfTurns++
         this.whosTurn = !this.whosTurn
-        // if (this.whosTurn === true) {
-        //     this.whosTurn = false
-        // } else {
-        //     this.whosTurn = true
-        // }
     }
 
 
@@ -47,7 +43,7 @@ class Game {
 }
 
 
-    resetGame(player1, player2) {
+    resetGame() {
         if (newGame.player1.wins === 5 || newGame.player2.wins === 5) {
             this.whoWins = null
             console.log('this is working')
@@ -75,7 +71,7 @@ class Game {
         this.player2.boardPosition = []
         this.whoWins = null
         this.gameBoard = [null, null, null, null, null, null, null, null, null]
-        
+        this.firstTurn = false
         // if (this.player1.wins === this.player2.wins && this.whoWins === `Sub-Zero Wins Flawless Victory`) {
         //     this.whosTurn = false
         // } else if (this.player1.wins === this.player2.wins && this.whoWins === `Scorpion Wins Flawless Victory`) {
