@@ -5,7 +5,7 @@ class Game {
         this.gameBoard = [null, null, null, null, null, null, null, null, null]
         this.numberOfTurns = 0
         this.whosTurn = true
-        this.firstTurn = true
+        this.firstTurn = 'player1'
         this.whoWins = null
         this.gameState = ''
     }
@@ -44,45 +44,34 @@ class Game {
 
 
     resetGame() {
-        if (newGame.player1.wins === 5 || newGame.player2.wins === 5) {
-            this.whoWins = null
-            console.log('this is working')
-            this.player1.wins = 0
-            this.player2.wins = 0
-            this.gameState = ''
-            this.numberOfTurns = 0
-            this.player1.boardPosition = []
-            this.player2.boardPosition = []
-            
-            // this.gameBoard = [null, null, null, null, null, null, null, null, null]
-            // if (this.player1.wins === this.player2.wins && this.whoWins === `Sub-Zero Wins Flawless Victory`) {
-            //     this.whosTurn = false
-            // } else if (this.player1.wins === this.player2.wins && this.whoWins === `Scorpion Wins Flawless Victory`) {
-            //     this.whosTurn = true
-            // } else if (this.player1.wins > this.player2.wins) {
-            //     this.whosTurn = false
-            // } else if (this.player1.wins < this.player2.wins) {
-            //     this.whosTurn = true
-            // }
-        }
         this.gameState = ''
         this.numberOfTurns = 0
         this.player1.boardPosition = []
         this.player2.boardPosition = []
         this.whoWins = null
         this.gameBoard = [null, null, null, null, null, null, null, null, null]
-        this.firstTurn = false
-        // if (this.player1.wins === this.player2.wins && this.whoWins === `Sub-Zero Wins Flawless Victory`) {
-        //     this.whosTurn = false
-        // } else if (this.player1.wins === this.player2.wins && this.whoWins === `Scorpion Wins Flawless Victory`) {
-        //     this.whosTurn = true
-        // } else if (this.player1.wins > this.player2.wins) {
-        //     this.whosTurn = false
-        // } else if (this.player1.wins < this.player2.wins) {
-        //     this.whosTurn = true
-        // }
-
+        if (this.firstTurn == 'player1'){
+            this.whosTurn = false
+            this.firstTurn = 'player2'
+            } else {
+            this.whosTurn = true
+            this.firstTurn = 'player1'
+        }
     }
+
+    
+    resetAfterFive() {
+        if (newGame.player1.wins === 5 || newGame.player2.wins === 5) {
+            this.whoWins = null
+            this.player1.wins = 0
+            this.player2.wins = 0
+            this.gameState = ''
+            this.numberOfTurns = 0
+            this.player1.boardPosition = []
+            this.player2.boardPosition = []
+            this.gameBoard = [null, null, null, null, null, null, null, null, null]
+    }
+}
 
 
     drawMap() {
