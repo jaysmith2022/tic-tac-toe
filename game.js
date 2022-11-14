@@ -8,6 +8,7 @@ class Game {
         this.firstTurn = 'player1'
         this.whoWins = null
         this.gameState = ''
+        this.gameNum = 0
     }
 
 
@@ -31,6 +32,7 @@ class Game {
         for(var i = 0; i < winMap.length;i++) {
             if (player.boardPosition.includes(winMap[i][0]) && player.boardPosition.includes(winMap[i][1]) && player.boardPosition.includes(winMap[i][2])) {
                 player.increaseWins()
+                player.saveWins()
             if (!this.whosTurn) {
                 this.whoWins = `Sub-Zero Wins Flawless Victory`
                 this.gameState = 'Winner'
@@ -44,6 +46,7 @@ class Game {
 
 
     resetGame() {
+        this.gameNum++
         this.gameState = ''
         this.numberOfTurns = 0
         this.player1.boardPosition = []
@@ -70,6 +73,8 @@ class Game {
             this.player1.boardPosition = []
             this.player2.boardPosition = []
             this.gameBoard = [null, null, null, null, null, null, null, null, null]
+            this.gameNum = 0
+            localStorage.clear()
     }
 }
 

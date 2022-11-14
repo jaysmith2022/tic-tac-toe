@@ -18,7 +18,8 @@ body {
     align-items: flex-start;
 }
 
-#background-video {
+#background-video,
+.errorVideo {
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -26,7 +27,7 @@ body {
     z-index: -1;
 }
 
-.loading {
+.loading{
     background-color: black;
     display: flex;
     align-items: center;
@@ -41,6 +42,7 @@ body {
     width: 200px;
     height: 40px;
     box-shadow: 5px 5px rgb(255, 111, 2);
+    color: white;
     background: rgb(0,0,0);
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(253,29,29,1) 42%, rgba(252,176,69,1) 74%);
     border-radius: 5px;
@@ -59,30 +61,30 @@ body {
     display: flex;
     height: 100%;
     flex-direction: column;
-    /* justify-content: flex-start; */
     align-items: center;
 }
 
 .main-area {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
+    display: grid;
+    justify-content: center;
     width: 50%;
     height: 100%;
-    border-right: 4px solid white;
-    border-left: 4px solid white;
+    border-right: 7px solid rgb(235, 165, 13);
+    border-left: 7px solid rgb(235, 165, 13);
+    border-left-style: ridge;
+    border-right-style: ridge;
+    align-content: center;
+    justify-items: center;
 }
 
-.win-message,
-.main-page-message {
+.main-page-message,
+.win-message {
     display: flex;
     flex-direction: row;
-    /* justify-content: center; */
     align-items: center;
-    /* width: 100%; */
-    /* height: fit-content; */
     font-family: 'Mortal Kombat';
+    margin-bottom: 40px;
+    height: 40px;
 }
 
 .player1-info,
@@ -91,7 +93,6 @@ body {
     height: 100%;
     width: 25%;
     align-items: center;
-    /* justify-content: flex-start; */
     flex-direction: column;
 }
 
@@ -109,11 +110,11 @@ p {
 }
 
 .game-board {
-    display: table;
-    border-collapse: collapse;
     width: 500px;
     height: 500px;
-    margin-bottom: 180px;
+    display: grid;
+    align-content: stretch;
+    align-items: stretch;
 }
 
 .box-0, 
@@ -125,13 +126,16 @@ p {
 .box-6, 
 .box-7, 
 .box-8 {
-    border: 3px solid white;
+    border: 3px solid rgb(235, 165, 13);
+    border-style: inset;
     width: 32%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 32%;
     color: white;
-    /* padding: 0; */
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center
 }
 
 .box-0, 
@@ -167,10 +171,13 @@ tr {
 
 td {
     cursor: pointer;
+    height: 32%;
+    width: 32%;
+    height: unset;
 }
 
 .player-token {
-    height: max-content;
+    height: auto;
     width: inherit;
 }
 
@@ -179,6 +186,7 @@ td {
     width: 100px;
     margin-left: -15px;
     margin-right: -23px;
+    height: 100px;
 }
 
 .disabled {
