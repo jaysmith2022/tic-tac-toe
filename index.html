@@ -8,10 +8,17 @@
             <title>Tic-Tac-Toe</title>
         </head>
         <body>
-            <video id="background-video" class="background" autoplay loop muted poster="assets/videos/MortalKombatBG.mp4">
+            <video id="background-video" class="background hidden" autoplay loop muted poster="assets/videos/MortalKombatBG.mp4">
                 <source src="assets/videos/MortalKombatBG.mp4" type="video/mp4">
             </video>
-            <section class="left-player1">
+            <section class="loading">
+                <video id="loading-page" class="loadingPage" autoplay loop muted poster="assets/videos/MK-logo.gif">
+                    <source src="assets/videos/MK-logo.gif" type="video/gif">
+                </video>
+                <audio id="audio" src="assets/music/Mortal Kombat.mp3"></audio>
+                <button class="loading-button">Let's Play</button>
+            </section>
+            <section class="left-player1 hidden">
                 <article class="player1-info">
                     <article class="player1-logo">
                     <video id="player1-idle" class="player1" autoplay loop muted poster ="assets/videos/subzero-idol.webm">
@@ -23,7 +30,7 @@
                     </div>
                 </article>
             </section>
-            <section class="main-area">
+            <section class="main-area hidden">
                 <article class="win-message">
                     <p class="main-page-message"></p> 
                     <p class="game-win-message hidden"></p>
@@ -40,7 +47,7 @@
                     <td class="box-8" id="box8" data-section='8'></td>
                 </table>
             </section>
-            <section class="right-player2">
+            <section class="right-player2 hidden">
                 <article class="player2-info">
                     <article class="player2-logo">
                         <video id="player2-idle" class="player2" autoplay loop muted poster="assets/videos/scorpio-idol.webm">
