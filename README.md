@@ -14,6 +14,10 @@ I created a tic tac toe game that allows a user to play against another player. 
 
 
 
+https://user-images.githubusercontent.com/107894408/202024206-eaf3bd71-b55b-4b04-a1a5-63eb77d1d216.mp4
+
+
+
 
 ## Context:
 This project was a fun way to test my creative side with the added difficulty of finding away to make that visual to the user while also having functionality. I had to do a lot of research on how I added some features such as the audio and moving players on the home page. It was a little tricky but to get the loading page to work correctly, but in the end it turned out well. 
