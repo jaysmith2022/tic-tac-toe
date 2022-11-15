@@ -32,7 +32,6 @@ class Game {
         for(var i = 0; i < winMap.length;i++) {
             if (player.boardPosition.includes(winMap[i][0]) && player.boardPosition.includes(winMap[i][1]) && player.boardPosition.includes(winMap[i][2])) {
                 player.increaseWins()
-                player.saveWins()
             if (!this.whosTurn) {
                 this.whoWins = `Sub-Zero Wins Flawless Victory`
                 this.gameState = 'Winner'
@@ -74,7 +73,6 @@ class Game {
             this.player2.boardPosition = []
             this.gameBoard = [null, null, null, null, null, null, null, null, null]
             this.gameNum = 0
-            localStorage.clear()
     }
 }
 

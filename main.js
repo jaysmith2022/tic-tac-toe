@@ -3,35 +3,36 @@ video.playbackRate = 1.3;
 video = document.getElementById("player1-idle");
 video.playbackRate = 1.5;
 
-
+var background = document.querySelector('.background')
+var clearButton = document.getElementById('clearScore')
+var errorMessage = document.getElementById('errorMessage')
+var fullBoard = document.querySelector('.game-board')
+var gameWinMessage = document.querySelector('.game-win-message')
+var leftPlayer = document.querySelector('.left-player1')
+var loadingButton = document.querySelector('.loading-button')
+var loadingPageArea = document.querySelector('.loading')
+var mainMessage = document.querySelector('.main-page-message')
+var mainPage = document.querySelector('.main-area')
 var player1Wins = document.querySelector('.player1-wins')
 var player2Wins = document.querySelector('.player2-wins')
-var leftPlayer = document.querySelector('.left-player1')
 var rightPlayer = document.querySelector('.right-player2')
-var mainPage = document.querySelector('.main-area')
-var fullBoard = document.querySelector('.game-board')
-var winMessage = document.querySelector('.win-message')
-var mainMessage = document.querySelector('.main-page-message')
-var tdTags = document.getElementsByTagName('td')
 var spots = document.querySelectorAll('td')
-var gameWinMessage = document.querySelector('.game-win-message')
-var loadingPageArea = document.querySelector('.loading')
-var loadingButton = document.querySelector('.loading-button')
-var background = document.querySelector('.background')
-var errorMessage = document.getElementById('errorMessage')
+var tdTags = document.getElementsByTagName('td')
+var winMessage = document.querySelector('.win-message')
 
 
 var newGame = new Game()
-var newAudio = new Audio('assets/music/Mortal Kombat.mp3')
 var errorAudio = new Audio('assets/music/toasty-sound.mp3')
+var newAudio = new Audio('assets/music/Mortal Kombat.mp3')
 var subZeroWins = new Audio('assets/music/subzero-wins.mp3')
 var scorpionWins = new Audio('assets/music/scorpionwins.mp3')
 var uhoh = new Audio('assets/music/uhoh.mp3')
 
 
+clearButton.addEventListener('click', clearGameBoard)
 fullBoard.addEventListener('click', newGamePlay)
-window.addEventListener('load', matchRestart)
 loadingButton.addEventListener('click', loadingPage)
+window.addEventListener('load', matchRestart)
 window.addEventListener('click', playTheme)
 
 
@@ -51,20 +52,10 @@ function loadingPage(event) {
 
 function matchRestart(event) {
     event.preventDefault()
-    newGame.player1.getWins()
-    newGame.player2.getWins()
-    localStorageUpdate()
     player1Wins.innerText = newGame.player1.wins
     player2Wins.innerText = newGame.player2.wins
     newGamePlay(event)
     updateWords()
-}
-
-function localStorageUpdate() {
-    if (localStorage.length === 0) {
-        player1Wins.innerText = 0
-        player2Wins.innerText = 0
-    }
 }
 
 
@@ -75,7 +66,6 @@ function newGamePlay(event) {
         newGame.player1.boardPosition.push(parseInt(event.target.dataset.section))
         newGame.changeTurns()
         updateWords()
-        localStorageUpdate()
         newGame.checkForWin(newGame.player1)
         updateGame()
         return
@@ -85,7 +75,6 @@ function newGamePlay(event) {
         newGame.player2.boardPosition.push(parseInt(event.target.dataset.section))
         newGame.changeTurns()
         updateWords()
-        localStorageUpdate()
         newGame.checkForWin(newGame.player2)
         updateGame()
         return
@@ -122,8 +111,6 @@ function updateGame() {
 
 
 function updateWins() {
-    newGame.player1.getWins()
-    newGame.player2.getWins()
     player1Wins.innerText = newGame.player1.wins
     player2Wins.innerText = newGame.player2.wins
     if (newGame.whoWins !== null ) {
@@ -216,4 +203,17 @@ function show(select) {
 }
 
 
-
+function clearGameBoard() {
+    if (newGame.player1.wins === 0 && newGame.player2.wins === 0) {
+        uhoh.play()
+        uhoh.volume = 0.3
+    } else {
+    newGame.resetGame()
+    newGame.player1.wins = 0
+    newGame.player2.wins = 0
+    newGame.player1.boardPosition = []
+    newGame.player2.boardPosition = []
+    player1Wins.innerText = newGame.player1.wins
+    player2Wins.innerText = newGame.player2.wins
+}
+}

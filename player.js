@@ -6,17 +6,6 @@ class Player {
         this.wins = 0
     }
 
-
-    saveWins() {
-        localStorage.setItem(`${this.token}`, JSON.stringify(this.wins))
-    }
-
-
-    getWins() {
-        var storedWins = JSON.parse(localStorage.getItem(`${this.token}`)) || []
-        this.wins = storedWins
-    }
-
 increaseWins() {
     this.wins++
     }
