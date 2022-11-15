@@ -211,9 +211,11 @@ function clearGameBoard() {
     newGame.resetGame()
     newGame.player1.wins = 0
     newGame.player2.wins = 0
-    newGame.player1.boardPosition = []
-    newGame.player2.boardPosition = []
-    player1Wins.innerText = newGame.player1.wins
-    player2Wins.innerText = newGame.player2.wins
+    updateWins()
+    spots.forEach(spots => {
+        spots.classList.remove('disabled')
+        updateWords()
+    displayGamePieces()
+    })
 }
 }
